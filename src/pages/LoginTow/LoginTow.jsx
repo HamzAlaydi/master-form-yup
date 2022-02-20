@@ -47,6 +47,7 @@ const LoginTow = () => {
 
   const { checkbox } = watch();
 
+  console.log();
   //Return
   return (
     <>
@@ -155,7 +156,11 @@ const LoginTow = () => {
           You must accept
         </FormHelperText>
 
-        <Button disabled={!checkbox} type="submit" variant="contained">
+        <Button
+          disabled={Object.keys(errors).length > 0}
+          type="submit"
+          variant="contained"
+        >
           Contained
         </Button>
       </form>
