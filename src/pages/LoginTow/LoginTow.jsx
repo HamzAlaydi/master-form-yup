@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   TextField,
   Button,
@@ -20,6 +20,8 @@ const LoginTow = () => {
   const [data, setData] = useState(false);
 
   //Constanses
+  const localData = JSON.parse(localStorage.getItem("formData"));
+
   const {
     control,
     watch,
@@ -27,11 +29,11 @@ const LoginTow = () => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      email: "",
-      password: "",
-      confarmPassword: "",
-      nickName: "",
-      phone: "",
+      email: localData.email,
+      password: localData.password,
+      confarmPassword: localData.confarmPassword,
+      nickName: localData.nickName,
+      phone: localData.phone,
       checkbox: "",
     },
     resolver: yupResolver(registerSchema),
@@ -39,10 +41,13 @@ const LoginTow = () => {
 
   const onSubmit = (data) => {
     setData(true);
+    localStorage.setItem("formData", JSON.stringify(data));
     console.log(data);
   };
 
   const { checkbox } = watch();
+
+  //Return
   return (
     <>
       <Alert style={{ display: data ? "" : "none" }} severity="success">
