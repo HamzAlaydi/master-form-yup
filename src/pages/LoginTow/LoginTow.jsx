@@ -29,12 +29,12 @@ const LoginTow = () => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      email: localData.email,
-      password: localData.password,
-      confarmPassword: localData.confarmPassword,
-      nickName: localData.nickName,
-      phone: localData.phone,
-      checkbox: "",
+//       email: localData.email,
+//       password: localData.password,
+//       confarmPassword: localData.confarmPassword,
+//       nickName: localData.nickName,
+//       phone: localData.phone,
+//       checkbox: "",
     },
     resolver: yupResolver(registerSchema),
   });
